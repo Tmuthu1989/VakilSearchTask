@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.2.1",
+    "chart.js": "^2.9.4",
+    "chartkick": "^3.2.1",
+    "chosen": "^0.0.2",
+    "datatables.net-bs4": "^1.10.20",
+    "flatpickr": "^4.6.9",
+    "imports-loader": "^0.8.0",
+    "popper.js": "^1.16.0",
+    "startbootstrap-sb-admin-2": "^4.0.7",
+    "toastr": "^2.1.4",
+    "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
+}
