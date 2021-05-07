@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root 'home#index'
   mount LetterOpenerWeb::Engine, at: "/mails" if Rails.env.development?
   devise_for :users
-  resources :juniors, controller: :users
-  resources :cases
+  resources :juniors
+  post "/add_juniors" => "juniors#add_juniors"
+  resources :cases do
+  	get :reject
+  end
 end

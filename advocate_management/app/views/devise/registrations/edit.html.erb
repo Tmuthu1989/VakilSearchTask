@@ -16,42 +16,7 @@
               <%= render "devise/shared/error_messages", resource: resource %>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12 col-md-6 form-group">
-              <label for="">First Name <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
-              <%= f.text_field :first_name, class: "form-control", required: true%>
-            </div>
-            <div class="col-12 col-md-6 form-group">
-              <label for="">Last Name <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
-              <%= f.text_field :last_name, class: "form-control", required: true%>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-6 form-group">
-              <label for="">Email <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
-              <%= f.email_field :email, class: "form-control", required: true%>
-            </div>
-            <div class="col-12 col-md-6 form-group">
-              <label for="">Mobile Number <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
-              <%= f.text_field :mobile_number, class: "form-control", required: true%>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-6 form-group">
-              <label for="">Advocate Number <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
-              <%= f.text_field :advocate_number, class: "form-control", required: true%>
-            </div>
-            <div class="col-12 col-md-6 form-group">
-              <label for="">Lawyer Type <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
-              <%= f.select :role, options_for_select([["Senior Lawyer", AppConstants::ROLE_SENIOR_LAWYER], ["Junior Lawyer", AppConstants::ROLE_JUNIOR_LAWYER]], current_user.role), {prompt: "Select Lawyer Type"},{class: "form-control", required: true}%>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-6 form-group">
-              <label for="">Serving States <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
-              <%= serving_states(f)%>
-            </div>
-          </div>
+          <%= render 'shared/user_fields', f: f%>
           <div class="row mt-3">
             <div class="col-12">
               <h5>Change Password</h5>              

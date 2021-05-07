@@ -40,6 +40,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.date :date_of_birth
       t.string :advocate_number
       t.integer :user_id
+      t.boolean :is_auto_pwd, default: false
+      t.string :enc_def_pwd
       t.timestamps null: false
     end
 

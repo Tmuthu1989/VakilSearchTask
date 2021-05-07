@@ -1,0 +1,42 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800"><%= @case.new_record? ? "New" : "Edit"%> Case</h1>
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Back</a>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+	
+  <div class="col-12">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+      	<%= form_for @case do |f|%>
+	      	<div class="row">
+					  <div class="col-12 col-md-4 form-group">
+					    <label for="">Client Name <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
+					    <%= f.text_field :client_name, class: "form-control", required: true%>
+					  </div>
+					  <div class="col-12 col-md-4 form-group">
+					    <label for="">Case Number <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
+					    <%= f.text_field :number, class: "form-control", required: true%>
+					  </div>
+					  <div class="col-12 col-md-4 form-group">
+					    <label for="">Case State <i class="fas fa-asterisk text-danger" style="font-size: 8px; top: -15px;"></i></label>
+					    <%= f.select :state_id, options_for_select(current_user.states.map{|state| ["#{state.name}(#{state.code})", state.id]}, @case.state_id), {}, {class: "chosen-select form-control", required: true}%>
+					  </div>
+					</div>
+      		<div class="row">
+      			<div class="col-12">
+      				<%= f.submit "Save", class: "btn btn-sm btn-success"%>
+      			</div>
+      		</div>
+      	<% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%if @case.errors.any?%>
+<script>
+  $errors = <%=@case.errors.to_json.html_safe%>
+</script>
+<% end -%>

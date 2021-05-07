@@ -1,0 +1,47 @@
+<body width="100%" style="margin: 0 auto; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222; !important; font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 15px; line-height: 1.8; color: rgba(0,0,0,.4);">
+  <center style="width: 100%; background-color: #f1f1f1;">
+  <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+    &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+  </div>
+  <div style="max-width: 600px; margin: 0 auto;" class="email-container">
+    <!-- BEGIN BODY -->
+    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+      
+      <tr>
+        <td valign="middle" class="hero" style="background-image: url('https://wallpapercave.com/wp/wp2750261.jpg'); background-size: cover; height: 400px;">
+          <table>
+            <tr>
+              <td>
+                <div class="text" style="padding: 2em 3em; text-align: center; color: #ffffff;">
+                  <h2 style="color: #ffffff;font-size: 26px; margin-bottom: 0; margin-top: 0;">Dear <%= @user.name%>,</h2>
+                  <p><%=@user.senior.name%> has added you as his junior. Please find your login credentials for your console.</p>
+                  
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td valign="middle" class="hero" style="background: #262626; background-size: cover; height: 300px;">
+          <table>
+            <tr>
+              <td>
+                <div class="text" style="padding: 2em 3em; text-align: center; color: #ffffff;">
+                  <h2 style="color: #ffffff;font-size: 26px; margin-bottom: 0; margin-top: 0;">Login Details:</h2>
+                  <p><strong>Username:</strong> <%= @user.email%></p>
+                  <p><strong>Password:</strong> <%= User.decrypt_data(@user.enc_def_pwd)%></p>
+                  <br>
+                  <p style="font-size: 14px; font-style: italic;"><strong>Note:</strong>As most of our communication happens through mail, please ensure that your mailbox is set up to receive emails from no-reply@advocate.com.</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      
+    </table>
+    
+  </div>
+  </center>
+</body>

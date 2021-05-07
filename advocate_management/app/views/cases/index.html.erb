@@ -1,0 +1,50 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Cases</h1>
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Back</a>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-12 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row">
+        	<div class="col-12 form-group">
+        		<%= link_to new_case_path, class: "btn btn-primary btn-sm float-right" do%>
+        			<i class="fas fa-plus"></i> New Case
+        		<% end -%>
+        	</div>
+        	<div class="col-12 table-responsive">
+        		<table class="table table-bordered table-striped">
+        			<thead>
+        				<tr>
+        					<th>S.No</th>
+        					<th>Client Name</th>
+        					<th>Case Number</th>
+        					<th>State</th>
+        					<th>Action</th>
+        				</tr>
+        			</thead>
+        			<tbody>
+        				<%if @cases.present?%>
+                  <%@cases.each do |state, cases|%>
+                    <tr>
+                      <th colspan="5"><h5><%= @states[state.to_i]%></h5></th>
+                    </tr>
+                    <%cases.each_with_index do |case_obj, i|%>
+                      <%= render 'case_tr', sno: i+1, case_obj: case_obj%>
+                    <% end -%>
+                  <% end -%>
+                <%else%>
+                  <%=render 'shared/no_records', colspan: 6%>
+                <%end%>
+        			</tbody>
+        		</table>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

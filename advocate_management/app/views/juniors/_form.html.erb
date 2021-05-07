@@ -1,0 +1,51 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800"><%= @junior.new_record? ? "New" : "Edit"%> Junior</h1>
+  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Back</a>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+	<%if @junior.new_record?%>
+		<div class="col-12 mb-4">
+	    <div class="card border-left-primary shadow h-100 py-2">
+	      <div class="card-body">
+	      	<%= form_tag add_juniors_path, method: "post" do%>
+		      	<h5>Add from Registered Juniors</h5> <small class="text-danger">Note: Junior who are all registered in this Application</small>
+		      	<div class="row">
+		      		<div class="col-12 form-group">
+		      			<%= select_tag :juniors, options_for_select(@existing_juniors), { class: "chosen-select form-control", multiple: true, data: {placeholder: "Select Junior"}, required: true}%>
+		      		</div>
+		      		<div class="col-12 form-group">
+		      			<button class="btn btn-sm btn-success">Add Junior</button>
+		      		</div>
+		      	</div>
+		      <% end -%>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-12"><h5 class="text-center">Or</h5></div>
+	<% end -%>
+  <div class="col-12">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+      	<%= form_for @junior, url: form_url, method: (@junior.new_record? ? "post" : "patch") do |f|%>
+      		<%=f.hidden_field :user_id, value: current_user.id%>
+      		<%=f.hidden_field :role, value: AppConstants::ROLE_JUNIOR_LAWYER%>
+      		<%=f.hidden_field :is_auto_pwd, value: true%>
+      		<%= render "shared/user_fields", f: f%>
+      		<div class="row">
+      			<div class="col-12">
+      				<%= f.submit "Save", class: "btn btn-sm btn-success"%>
+      			</div>
+      		</div>
+      	<% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%if @junior.errors.any?%>
+<script>
+  $errors = <%=@junior.errors.to_json.html_safe%>
+</script>
+<% end -%>

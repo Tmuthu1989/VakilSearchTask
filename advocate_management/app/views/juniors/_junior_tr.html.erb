@@ -1,0 +1,15 @@
+<tr>
+	<td><%= sno%></td>
+	<td><%= junior.name%></td>
+	<td><%= junior.advocate_number%></td>
+	<td><%= junior.contact_details%></td>
+	<td><%= junior.states.pluck(:name).join(",")%></td>
+	<td>
+		<%= link_to edit_junior_path(junior), class: "btn btn-sm btn-warning" do%>
+			<i class="fas fa-edit"></i> Edit
+		<% end -%>
+		<%= link_to junior_path(junior), method: :delete, data: {confirm: "Are you sure you want to delete this junior?"}, class: "btn btn-sm btn-danger" do%>
+			<i class="fas fa-trash"></i> Delete
+		<% end -%>
+	</td>
+</tr>
